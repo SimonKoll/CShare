@@ -53,7 +53,7 @@
                 <div class="col-sm-4"><a href="../chat/index.php"><button type="button" class="btn btn-outline-primary">CHAT</button></a><br>
                 </div>
                 <div class="col-sm-4">
-                    <a href="vermieten.php"><button type="button" class="btn btn-outline-primary">RENT</button></a><br>
+                    <a href="../car/vermieten.php"><button type="button" class="btn btn-outline-primary">RENT</button></a><br>
                 </div>
                 <div class="col-sm-4">
                     <a href="../index/index.php"><button type="button" class="btn btn-outline-primary">INDEX</button></a><br></div>

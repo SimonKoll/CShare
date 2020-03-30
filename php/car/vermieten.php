@@ -49,7 +49,7 @@
         </div>
         <select id="brand" style="width: 100%;padding: 16px 20px; border: none; border-radius: 4px; background-color: #87cefa;" onchange="$.ajax({
     type: 'POST',
-    url: 'vermieten.php',                
+    url: 'vermieten.php',
     data:{value: this.value}})">
             <?php
             $sql1 = "SELECT brand, count(*) FROM cars.cars GROUP BY brand";
@@ -92,20 +92,10 @@
                 });
                 $("#model").change(function() {
                     var cont = document.getElementsByClassName("container_adr");
-                    var form = '        <h3 align="center">Where is your car?</a></h3><br /><br /><div class="panel panel-default"><div class="panel-heading">Enter adress:</div><div class="panel-body"><form method="post">    </p>      <div class="form-group"><label>Zip Code </label> <input type="number" name="zip" class="form-control" required />      </div>      <div class="form-group">          <label>Town</label>          <input type="text" name="town" class="form-control" required />        </div>    <div class="form-group">          <label>Street</label>          <input type="text" name="street" class="form-control" required />        </div>        <div class="form-group">            <button type="button" id="checkbtn" class="btn btn-info" onClick="apicall();">test</button>  </form>       </div>    </div>';
+                    var form = '        <h3 align="center">Where is your car?</h3><br /><br /><div class="panel panel-default"><div class="panel-heading">Enter adress:</div><div class="panel-body"><form method="post">    </p>      <div class="form-group"><label>Zip Code </label> <input type="number" name="zip" class="form-control" required />      </div>      <div class="form-group">          <label>Town</label>          <input type="text" name="town" class="form-control" required />        </div>    <div class="form-group">          <label>Street</label>          <input type="text" name="street" class="form-control" required />        </div>        <div class="form-group">            <button type="button" id="checkbtn" class="btn btn-info" onClick="apicall();">test</button>  </form>       </div>    </div>';
                     $(cont).html(form);
 
                 });
-                //  $('form').on('focus', function(e) {
-
-                // e.preventDefault();
-
-
-
-                //    });
-
-
-
 
             });
             var apicall = function() {
