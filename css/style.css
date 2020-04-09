@@ -470,11 +470,15 @@ s .social a:hover {
 }
 
 .bg-image {
-    background-image: url('../img/CSHARE-B.png');
-    background-size: cover;
-    background-position: center center;
+  background-image: url('../img/speed-1249610.jpg');
+  background-size: cover;
+  background-position: center center;
 }
-
+.register-bg-image{
+  background-image: url('../img/steering-wheel-801994.jpg');
+  background-size: cover;
+  background-position: center center;
+}
 
 /*
 *
