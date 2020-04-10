@@ -28,6 +28,3 @@ function fetch_user_last_activity($user_id, $conn)
   return $row['last_activity'];
  }
 }
-
-?>
-

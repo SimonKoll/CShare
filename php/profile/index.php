@@ -6,9 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Your Account - CShare</title>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
 	<link rel="stylesheet" href="../../css/style.css">
 
 	<link rel="icon" type="image/png" href="../../img/logoC.png" sizes="32x32">
@@ -18,7 +19,7 @@
 	<?php
 	//if (!isset($_SESSION['uid'])) {
 	//	header('location:../login/login.php');
-	//} 
+	//}
 	?>
 	<?php
 	include_once("../db_connect.php");

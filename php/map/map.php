@@ -4,13 +4,12 @@
 <head>
     <title>The locations</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-  <!--  <script src="https://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script> -->
+    <!--  <script src="https://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/style.css">
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FxwOM-OmMKsSTAEGa1m-6WlBGPTB0kI&callback=initMap"
-  type="text/javascript"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-FxwOM-OmMKsSTAEGa1m-6WlBGPTB0kI&callback=initMap" type="text/javascript"></script>
 
     <link rel="icon" type="image/png" href="../../img/logoC.png" sizes="32x32">
     <style>
@@ -27,22 +26,22 @@
     <meta charset="utf-8">
 </head>
 <?php
-    include_once("../db_connect.php");
-    session_start();
+include_once("../db_connect.php");
+session_start();
 
-    if (isset($_SESSION['uid'])) {
-        header("Location: ../index/index.php");
-    }
-    $uid = $_SESSION['user_id'];
-    $sql_1 = "SELECT username FROM users WHERE uid=$uid";
+if (isset($_SESSION['uid'])) {
+    header("Location: ../index/index.php");
+}
+$uid = $_SESSION['user_id'];
+$sql_1 = "SELECT username FROM users WHERE uid=$uid";
 
 
-    $uname =    mysqli_query($conn, $sql_1);
+$uname =    mysqli_query($conn, $sql_1);
 
-    $row_1 = mysqli_fetch_assoc($uname);
+$row_1 = mysqli_fetch_assoc($uname);
 
-    //
-    ?>
+//
+?>
 
 <body onload="getLocation()">
 
