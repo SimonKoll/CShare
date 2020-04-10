@@ -10,4 +10,3 @@ if (mysqli_num_rows($model) > 0) {
     }
 
 }
-
