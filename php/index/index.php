@@ -18,7 +18,7 @@
     session_start();
 
     if (isset($_SESSION['uid'])) {
-        header("Location: ../index/index.php");
+        header("Location: ../login/login.php");
     }
     $uid = $_SESSION['user_id'];
     $sql_1 = "SELECT username FROM users WHERE uid=$uid";

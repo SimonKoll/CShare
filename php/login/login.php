@@ -19,12 +19,7 @@
 
 session_start();
 include('../db_connect.php');
-
-$message = '';
-
-if (isset($_SESSION['uid'])) {
-    header('location:../index/index.php');
-}
+ $error_message ='';
 
 if (isset($_POST['login'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -35,7 +30,7 @@ if (isset($_POST['login'])) {
         $_SESSION['user_name'] = $row['user'];
         header("Location: ../index/index.php");
     } else {
-        $error_message = "Incorrect Email or Password!!!";
+        $error_message = "Warning! Incorrect Email or Password!!!";
     }
 }
 
@@ -58,7 +53,7 @@ if (isset($_POST['login'])) {
                             <div class="col-lg-10 col-xl-7 mx-auto">
                                 <h3 class="display-4">Login</h3>
                                 <p class="text-muted mb-4">Enter your user credentials:</p>
-                                <p class="text-danger"><?php echo $message; ?></p>
+                                <p class="text-danger"><?php echo $error_message; ?></p>
                                 <form method="post">
                                     <div class="form-group mb-3">
                                         <input id="inputEmail" name="email" type="email" placeholder="Email address" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
