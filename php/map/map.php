@@ -29,7 +29,7 @@
 include_once("../db_connect.php");
 session_start();
 
-if (!isset($_SESSION['uid'])) {
+if (isset($_SESSION['uid'])) {
     header("Location: ../login/login.php");
 }
 $uid = $_SESSION['user_id'];
@@ -40,9 +40,7 @@ $uname =    mysqli_query($conn, $sql_1);
 
 $row_1 = mysqli_fetch_assoc($uname);
 
-//
 ?>
-
 <body onload="getLocation()">
 
     <p align="right">Hi -<?php echo $row_1["username"] ?> - <a href="../login/logout.php">Logout</a></p>
@@ -76,6 +74,7 @@ $row_1 = mysqli_fetch_assoc($uname);
     function showPosition(position) {
         var lat = position.coords.latitude;
         var lng = position.coords.longitude;
+  var center= new google.maps.LatLng(lat, lng)
         //Google maps API initialisation
         var element = document.getElementById("map");
         var mapTypeIds = [];
@@ -84,14 +83,23 @@ $row_1 = mysqli_fetch_assoc($uname);
         }
         mapTypeIds.push("OSM");
         var map = new google.maps.Map(element, {
-            center: new google.maps.LatLng(lat, lng),
+            center: center,
             zoom: 16,
             mapTypeId: "OSM",
             mapTypeControlOptions: {
                 mapTypeIds: mapTypeIds
             },
             streetViewControl: true
-        });
+        }); 
+  var marker = new google.maps.Marker({
+    position: center,
+    map: map,
+    title: 'Sie sind hier!',
+    	icon: {
+    		url: "../../img/logoC.png",
+    		scaledSize: new google.maps.Size(32, 32)
+    	}
+  });
 
         //Define OSM map type pointing at the OpenStreetMap tile server
         map.mapTypes.set("OSM", new google.maps.ImageMapType({

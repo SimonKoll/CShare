@@ -17,7 +17,7 @@
     include_once("../db_connect.php");
     session_start();
 
-    if (isset($_SESSION['uid'])) {
+    if (!isset($_SESSION['uid'])) {
         header("Location: ../login/login.php");
     }
     $uid = $_SESSION['user_id'];
@@ -62,7 +62,7 @@
                     <a href="../profile/index.php"><button type="button" class="btn btn-outline-primary">PROFILE</button></a><br>
                 </div>
                 <div class="col-sm-3">
-                    <a href="../contact/index.html"><button type="button" class="btn btn-outline-primary">Contact us</button></a><br>
+                    <a href="../contact/index.php"><button type="button" class="btn btn-outline-primary">Contact us</button></a><br>
                 </div>
 
             </div>
