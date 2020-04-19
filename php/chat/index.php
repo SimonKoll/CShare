@@ -27,7 +27,7 @@ $row_1 = mysqli_fetch_assoc($uname);
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Chat Application using PHP Ajax Jquery</title>
+        <title>Chat - CShare</title>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
       <!--  <link rel="stylesheet" href="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.css"> -->
@@ -41,7 +41,7 @@ $row_1 = mysqli_fetch_assoc($uname);
         <div class="container">
 			<br />
 
-			<h3 align="center">Chat - CShare</h3><br />
+			<h3 align="center">Chats</h3><br />
 			<br />
 			<div class="row">
 				<div class="col-md-8 col-sm-6">
