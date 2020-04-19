@@ -1,4 +1,3 @@
-<?php  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -9,7 +8,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   </head>
 
-  <body style="background-image: url('../../img/traffic-332857.jpg')">
+  <body>
+<div class="container-fluid bg-secondary">
+
 
   <form class="form-signin" role="form" action="send_via_gmail.php" method="post">
       <h3 class =""style="text-align: center;">Contact Us</h3>
@@ -32,7 +33,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text bg-white"><i class="fa fa-user"></i>&nbsp</span>
                   </div>
-                  <input name="name" id="name" type="text" placeholder="Name" class="form-control border-left-0" required>
+                  <input name="name" id="name" type="text" placeholder="Name" class="form-control border-left-0 border" required>
                 </div>
               </div>
           </div>
@@ -51,8 +52,13 @@
 
 
 
-  </form>
-
+  </form><a href="../index/index.php ">
+  <button  style="float: left;" class="btn btn-primary float-left">
+    <i class="fa fa-home"></i>
+    Back to home
+  </button>
+  </a>
+  </div>
   </body>
 
 </html>

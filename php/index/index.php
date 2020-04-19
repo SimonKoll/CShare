@@ -17,7 +17,8 @@
     include_once("../db_connect.php");
     session_start();
 
-    if (!isset($_SESSION['uid'])) {
+    if (isset($_SESSION['uid'])) {
+      var_dump(isset($_SESSION['uid']));
         header("Location: ../login/login.php");
     }
     $uid = $_SESSION['user_id'];
@@ -53,7 +54,7 @@
     <div class="jumbotron text-center">
         <div class="container">
             <div class="row">
-                <div class="col-sm-3"><a href="../chat/1-client.html"><button type="button" class="btn btn-outline-primary">CHAT</button></a><br>
+                <div class="col-sm-3"><a href="../chat/index.php"><button type="button" class="btn btn-outline-primary">CHAT</button></a><br>
                 </div>
                 <div class="col-sm-3">
                     <a href="../map/map.php"><button type="button" class="btn btn-outline-primary">MAP</button></a><br>
