@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-sm-4"><a href="../chat/index.php"><button type="button" class="btn btn-outline-primary">CHAT</button></a><br>
                 </div>
-                <div class="col-sm-4"><a href="./map.php"><button type="button" class="btn btn-outline-primary">MAP</button></a><br>
+                <div class="col-sm-4"><a href="../map/map.php"><button type="button" class="btn btn-outline-primary">MAP</button></a><br>
                 </div>
             </div>
         </div>

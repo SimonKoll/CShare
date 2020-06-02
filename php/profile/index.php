@@ -25,7 +25,7 @@
 	include_once("../db_connect.php");
 	session_start();
 
-	if (!isset($_SESSION['uid'])) {
+	if (isset($_SESSION['uid'])) {
 		header("Location: ../index/index.php");
 	}
 	$uid = $_SESSION['user_id'];
@@ -137,7 +137,7 @@ if ($uploadOk == 0) {
 else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 			if(mysqli_query($conn, $sql_3)!= null){
-				var_dump(mysqli_query($conn, $sql_3));
+			//	var_dump(mysqli_query($conn, $sql_3));
 				die();
 					$pic_path  =	mysqli_query($conn, $sql_3);
 				$path = mysqli_fetch_assoc($pic_path);
@@ -155,7 +155,7 @@ else {
 				if ($_res = $conn->query($updateStatement)) {
             echo "<br>Image $target_file has been updated.";
         } else {
-					var_dump($_res);
+				//	var_dump($_res);
             echo "<br>NO insertion into database";
         }
 
@@ -238,14 +238,14 @@ else {
             die("Connection failed: " . $conn->connect_error);
         }
         $insertStatement = "INSERT INTO images (id, uid, path) VALUES ('',$uid,'$target_file');";
-				var_dump($insertStatement);
+				//var_dump($insertStatement);
         if ($_res = $conn->query($insertStatement)) {
             echo "<br>Image $target_file has been added to the database.";
 							$pic_path  =	mysqli_query($conn, $sql_3);
 							$path = mysqli_fetch_assoc($pic_path);
-							var_dump($path);
+				//			var_dump($path);
         } else {
-					var_dump($_res);
+				//	var_dump($_res);
             echo "<br>NO insertion into database";
         }
 

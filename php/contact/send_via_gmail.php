@@ -39,10 +39,10 @@ $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 $mail->SMTPAuth = true;
 
 //Username to use for SMTP authentication - use full email address for gmail
-$mail->Username = 'project.cshare@gmail.com';
+$mail->Username = 'simonkoll20@gmail.com';
 
 //Password to use for SMTP authentication
-$mail->Password = 'V*5#-sU@waGT@H6M';
+$mail->Password = 'PB%c_YJq=G9y9mCK';
 
 //Set who the message is to be sent from
 $mail->setFrom($_POST["email"], $_POST["name"]);
@@ -51,7 +51,7 @@ $mail->setFrom($_POST["email"], $_POST["name"]);
 $mail->addReplyTo($_POST["email"], $_POST["name"]);
 
 //Set who the message is to be sent to
-$mail->addAddress('simonkoll20@gmail.com', 'Koll Simon');
+$mail->addAddress('project.cshare@gmail.com', 'Koll Simon');
 
 //Set the subject line
 $mail->Subject = $_POST["subject"];
