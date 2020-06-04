@@ -17,8 +17,8 @@
     include_once("../db_connect.php");
     session_start();
 
-    if (isset($_SESSION['uid'])) {
-        header("Location: ../index/index.php");
+    if (!isset($_SESSION['uid'])) {
+        header("Location: ../login/login.php");
     }
     $uid = $_SESSION['user_id'];
     $sql_1 = "SELECT username FROM users WHERE uid=$uid";
@@ -30,24 +30,38 @@
 
     //
     ?>
+    <style>
+        #hidden {
+
+            display: none;
+            visibility: hidden;
+        }
+    </style>
 
 <body>
+
     <div class="container">
 
         <h4>Please specify your car</h4>
-        <p align="right">Hi -<?php echo $row_1["username"] ?> - <a href="../login/logout.php">Logout</a></p>
+        <p align="right">Hi -<?php echo $row_1["username"] ?> - <a
+                href="../login/logout.php">Logout</a></p>
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
-                    <a href="../index/index.php"><button type="button" class="btn btn-outline-primary">INDEX</button></a><br>
+                    <a href="../index/index.php"><button type="button"
+                            class="btn btn-outline-primary">INDEX</button></a><br>
                 </div>
-                <div class="col-sm-4"><a href="../chat/index.php"><button type="button" class="btn btn-outline-primary">CHAT</button></a><br>
+                <div class="col-sm-4"><a href="../chat/index.php"><button type="button"
+                            class="btn btn-outline-primary">CHAT</button></a><br>
                 </div>
-                <div class="col-sm-4"><a href="../map/map.php"><button type="button" class="btn btn-outline-primary">MAP</button></a><br>
+                <div class="col-sm-4"><a href="../map/map.php"><button type="button"
+                            class="btn btn-outline-primary">MAP</button></a><br>
                 </div>
             </div>
         </div>
-        <select id="brand" style="width: 100%;padding: 16px 20px; border: none; border-radius: 4px; background-color: #87cefa;" onchange="$.ajax({
+        <select id="brand"
+            style="width: 100%;padding: 16px 20px; border: none; border-radius: 4px; background-color: #87cefa;"
+            onchange="$.ajax({
     type: 'POST',
     url: 'vermieten.php',
     data:{value: this.value}})">
@@ -92,7 +106,8 @@
                 });
                 $("#model").change(function() {
                     var cont = document.getElementsByClassName("container_adr");
-                    var form = '        <h3 align="center">Where is your car?</h3><br /><br /><div class="panel panel-default"><div class="panel-heading">Enter adress:</div><div class="panel-body"><form method="post">    </p>      <div class="form-group"><label>Zip Code </label> <input type="number" name="zip" class="form-control" required />      </div>      <div class="form-group">          <label>Town</label>          <input type="text" name="town" class="form-control" required />        </div>    <div class="form-group">          <label>Street</label>          <input type="text" name="street" class="form-control" required />        </div>        <div class="form-group">            <button type="button" id="checkbtn" class="btn btn-info" onClick="apicall();">test</button>  </form>       </div>    </div>';
+                    var form =
+                        '        <h3 align="center">Where is your car?</h3><br /><br /><div class="panel panel-default"><div class="panel-heading">Enter adress:</div><div class="panel-body"><form method="post">    </p>      <div class="form-group"><label>Zip Code </label> <input type="number" name="zip" class="form-control" required />      </div>      <div class="form-group">          <label>Town</label>          <input type="text" name="town" class="form-control" required />        </div>    <div class="form-group">          <label>Street</label>          <input type="text" name="street" class="form-control" required />        </div>   <div class="form-group"> <label>Description</label><input type="text" name="desc" class="form-control" /></div>      <div class="form-group">            <button type="button" id="checkbtn" class="btn btn-info" onClick="apicall();">Insert for Rental</button>  </form>       </div>    </div>';
                     $(cont).html(form);
 
                 });
@@ -102,23 +117,25 @@
                 var form = $('form').serialize();
                 var brand = $('#brand').val();
                 var model = $('#model').val();
-                $.ajax({
-                    type: 'POST',
-                    url: './checkinsert.php',
-                    data: {
-                        form,
-                        brand,
-                        model
-                    },
-                    success: function(response) {
-                        result = document.getElementById('result');
-                        $(result).html(response);
+                var desc = $('#desc').val();
+                    $.ajax({
+                        type: 'POST',
+                        url: './checkinsert.php',
+                        data: {
+                            form,
+                            brand,
+                            model,
+                            desc
+                        },
+                        success: function(response) {
+                            result = document.getElementById('result');
+                            $(result).html(response);
 
-                    },
-                    error: function(x) {
-                        alert(error);
-                    }
-                });
+                        },
+                        error: function(x) {
+                            alert(error);
+                        }
+                    });
             }
         </script>
 </body>

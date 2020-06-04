@@ -16,6 +16,7 @@
     if (isset($_SESSION['user_id'])) {
         session_destroy();
         unset($_SESSION['user_id']);
+        unset($_SESSION['uid']);
         unset($_SESSION['user_name']);
         header("Location: ../../index.html");
     } else {

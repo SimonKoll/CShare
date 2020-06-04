@@ -15,8 +15,8 @@
 include_once("../db_connect.php");
 session_start();
 
-if (isset($_SESSION['uid'])) {
-    header("Location: ../index/index.php");
+if (!isset($_SESSION['uid'])) {
+    header("Location: ../login/login.php");
 }
 $error = false;
 if (isset($_POST['signup'])) {

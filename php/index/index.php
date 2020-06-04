@@ -17,8 +17,7 @@
     include_once("../db_connect.php");
     session_start();
 
-    if (isset($_SESSION['uid'])) {
-      var_dump(isset($_SESSION['uid']));
+    if (!isset($_SESSION['uid'])) {
         header("Location: ../login/login.php");
     }
     $uid = $_SESSION['user_id'];

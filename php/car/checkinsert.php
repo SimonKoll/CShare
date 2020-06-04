@@ -9,21 +9,25 @@ $uname = mysqli_query($conn, $sql_1);
 
 $row1 = mysqli_fetch_assoc($uname);
 
-$uid = $row1["username"];
+
 
 $brand = $_POST['brand'];
 $model = $_POST['model'];
+
+$name = $brand." , ".$model;
 $str = explode("&", $_POST['form']);
 
 $str = str_replace(array('%20'), ' ', $str);
 $str = str_replace(array('%C3%9F'), 'ß', $str);
+$str = str_replace(array('%C3%BC'), 'ü', $str);
 $zip = substr($str[0], 4);
 
 $town = substr($str[1], 5);
 
 $street = substr($str[2], 7);
+$desc = substr($str[3], 5);
 $searchstring = $street . ',+' . $zip . '+' . $town;
-echo $searchstring;
+// echo $searchstring;
 
 // echo $searchstring . $brand . $model;
 $queryString = http_build_query([
@@ -33,7 +37,7 @@ $queryString = http_build_query([
     'geojson' => '1'
 ]);
 
-
+$address = $street;
 $ch = curl_init(sprintf('%s?%s', 'https://geocode.xyz', $queryString));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -43,17 +47,16 @@ curl_close($ch);
 
 $apiResult = json_decode($json, true);
 $lat = $apiResult['properties']['lat'];
-var_dump($lat);
-$long = $apiResult['properties']['lon'];
-var_dump($long);
-$sql = "INSERT INTO cshare.adresse (strasse, plz, longitude, latitude, id, stadt) VALUES ('" . $street . "', " . $zip . "," . $lat . "," . $long . ", NULL,'" . $town . "')";
 
-if ($conn->query($sql) === TRUE) {
-    $checkSQL = "SELECT * FROM cshare.adresse";
-    $result = $conn->query($checkSQL);
-    echo "Returned rows are: " . $result->num_rows;
-    var_dump($result);
-    //     echo "New record created successfully";
+$long = $apiResult['properties']['lon'];
+$uname = $row1['username'];
+$sql = "INSERT INTO cshare.locations  (id, username ,name, address, lat, lon, description) VALUES ('','".$uname."' , '" . $name . "', '" . $address  . "'," . $lat . "," . $long . ", '".$desc."' )";
+
+
+if ($conn->query($sql) === true) {
+    echo "Success! ";
+    die();
+//     echo "New record created successfully";
     //     $sql1 = "SELECT 'id' from adresse where latitude=" . $lat . "and longitude=" . $long . ";";
     //     $addr_id = mysqli_query($conn, $sql1);
     //     $row_1 = mysqli_fetch_assoc($addr_id);

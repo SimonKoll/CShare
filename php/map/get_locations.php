@@ -1,11 +1,15 @@
 <?php
-include_once("../db_connect.php");
-try{
-  $sql="SELECT * FROM locations";
-  $location=mysqli_query($conn, $sql);
 
-$row1=mysqli_fetch_all($location);
-var_dump($row1);
+require 'config.php';
+
+try {
+    $db = new PDO($dsn, $username, $password);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $sth = $db->query("SELECT * FROM locations");
+    $locations = $sth->fetchAll();
+
+    echo json_encode($locations);
 } catch (Exception $e) {
-echo $e->getMessage();
-}?>
+    echo $e->getMessage();
+}
